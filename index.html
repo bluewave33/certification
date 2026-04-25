@@ -662,8 +662,8 @@
             });
             if (!res.ok) throw new Error('Gist 불러오기 실패: ' + res.status);
             const data = await res.json();
-            const file = data.files['news.json'];
-            if (!file) throw new Error('news.json 파일이 Gist에 없습니다.');
+            const file = data.files['certification.json'];
+            if (!file) throw new Error('certification.json 파일이 Gist에 없습니다.');
             return JSON.parse(file.content);
         }
 
@@ -677,7 +677,7 @@
             const res = await fetch(`https://api.github.com/gists/${gistId}`, {
                 method: 'PATCH',
                 headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-                body: JSON.stringify({ files: { 'news.json': { content: JSON.stringify(stripped, null, 2) } } })
+                body: JSON.stringify({ files: { 'certification.json': { content: JSON.stringify(stripped, null, 2) } } })
             });
             if (!res.ok) throw new Error('Gist 저장 실패: ' + res.status);
         }
@@ -729,7 +729,7 @@
                             <div className="p-4 bg-amber-50 rounded-xl border border-amber-100 text-sm text-amber-800 space-y-1.5">
                                 <p className="font-semibold">📋 설정 방법</p>
                                 <p>1. <a href="https://github.com/settings/tokens/new?scopes=gist" target="_blank" className="underline text-amber-700">github.com → Settings → Tokens</a> 에서 <strong>gist</strong> 권한으로 토큰 생성</p>
-                                <p>2. <a href="https://gist.github.com" target="_blank" className="underline text-amber-700">gist.github.com</a> 에서 새 Gist 생성 → 파일명 <strong>news.json</strong>, 내용 <strong>[]</strong></p>
+                                <p>2. <a href="https://gist.github.com" target="_blank" className="underline text-amber-700">gist.github.com</a> 에서 새 Gist 생성 → 파일명 <strong>certification.json</strong>, 내용 <strong>[]</strong></p>
                                 <p>3. Gist URL에서 ID 복사 (마지막 긴 문자열)</p>
                             </div>
                             <div>
