@@ -147,7 +147,7 @@
             };
 
             const handleSubmit = () => {
-                if (!form.title || !form.company) return alert('제목과 종목명은 필수입니다.');
+                if (!form.title) return alert('제목은 필수입니다.');
                 onAdd({
                     id: Date.now(),
                     ...form,
@@ -181,26 +181,12 @@
                                     placeholder="뉴스 제목을 입력하세요" value={form.title}
                                     onChange={e => setForm({...form, title: e.target.value})} />
                             </div>
-                            {/* 종목명 / 티커 */}
-                            <div className="grid grid-cols-2 gap-3">
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-1">종목명 <span className="text-red-400">*</span></label>
-                                    <input className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm gold-ring outline-none"
-                                        placeholder="예: 삼성전자" value={form.company}
-                                        onChange={e => setForm({...form, company: e.target.value})} />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-1">티커</label>
-                                    <input className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm gold-ring outline-none"
-                                        placeholder="예: 005930" value={form.ticker}
-                                        onChange={e => setForm({...form, ticker: e.target.value})} />
-                                </div>
-                            </div>
+
                             {/* 요약 */}
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-1">요약</label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-1">키워드</label>
                                 <textarea className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm gold-ring outline-none resize-none"
-                                    rows={2} placeholder="뉴스 요약을 입력하세요" value={form.summary}
+                                    rows={2} placeholder="키워드를 입력하세요" value={form.summary}
                                     onChange={e => setForm({...form, summary: e.target.value})} />
                             </div>
                             {/* 본문 */}
@@ -391,7 +377,7 @@
             };
 
             const handleSave = () => {
-                if (!form.title || !form.company) return alert('제목과 종목명은 필수입니다.');
+                if (!form.title) return alert('제목은 필수입니다.');
                 onSave({ ...news, ...form, tags, attachments });
                 onClose();
             };
@@ -416,22 +402,10 @@
                                 <input className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm gold-ring outline-none"
                                     value={form.title} onChange={e => setForm({...form, title: e.target.value})} />
                             </div>
-                            {/* 종목명 / 티커 */}
-                            <div className="grid grid-cols-2 gap-3">
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-1">종목명 <span className="text-red-400">*</span></label>
-                                    <input className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm gold-ring outline-none"
-                                        value={form.company} onChange={e => setForm({...form, company: e.target.value})} />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-1">티커</label>
-                                    <input className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm gold-ring outline-none"
-                                        value={form.ticker} onChange={e => setForm({...form, ticker: e.target.value})} />
-                                </div>
-                            </div>
+
                             {/* 요약 */}
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-1">요약</label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-1">키워드</label>
                                 <textarea className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm gold-ring outline-none resize-none"
                                     rows={2} value={form.summary} onChange={e => setForm({...form, summary: e.target.value})} />
                             </div>
